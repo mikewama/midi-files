@@ -1,0 +1,10 @@
+
+.midiFile {
+    border: 1px darkslategrey solid;
+    padding: 1em;
+    background-color: whitesmoke;
+  }
+  .midiFile Div{
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
