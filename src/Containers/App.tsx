@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-//import * as React from 'react';
 import './App.css';
 import MidiFile, { MidiFileInfo } from '../Components/MidiFiles/MidiFile/MidiFile';
-import MidiFiles from '../Components/MidiFiles/MidiFIles'
+import MidiFiles from '../Components/MidiFiles/MidiFiles'
 
 interface IProps {
 }
@@ -18,24 +17,31 @@ class App extends Component<IProps, IState> {
 
     this.state = {
       midiFiles: [
-        { FilePath: 'file1.mid', Date: '03/03/82', Author: 'Philip Kerman' }
+        { FilePath: 'file1.mid', Date: '03/03/82', Author: 'Philip Kerman' },
+        { FilePath: 'file2.mid', Date: '04/04/82', Author: 'Nigel Kerman' },
+        { FilePath: 'file3.mid', Date: '05/05/82', Author: 'Roger Kerman' },
+        { FilePath: 'file4.mid', Date: '06/06/82', Author: 'Marge Kerman' }
       ]
     };
   }
 
   render() {
 
-    const props = this.state.midiFiles[0];
+    const props = this.state.midiFiles;
 
     return (
-      <div className="">
+      <div className="App">
         <header className="">
           <p>
             React App - Midi Files
         </p>
         </header>
         {/* <MidiFile {...this.state.midiFiles[0]} /> */}
-        <MidiFile {...props} />
+        {
+          props.map((item, key) =>
+            <MidiFile {...item} key={key}/>
+          )
+        }
       </div>
     );
   }

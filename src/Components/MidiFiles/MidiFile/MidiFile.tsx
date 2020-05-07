@@ -11,6 +11,7 @@ const MidiFile = (props: MidiFileInfo) => (
     <div className="midiFile">
         Midi File
         <hr/>
+        
         <div><span>File: </span><span>{props.FilePath}</span></div>
         <div><span>Date: </span><span>{props.Date}</span></div>
         <div><span>Author: </span><span>{props.Author}</span></div>
