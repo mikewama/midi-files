@@ -1,12 +1,19 @@
 import React from 'react';
 import './MidiFile.css';
 
-const MidiFile = (props: any) => (
-    <div className="midiFile">        
+export interface MidiFileInfo {
+	FilePath: string;
+	Author: string;
+    Date: string;
+}
+
+const MidiFile = (props: MidiFileInfo) => (
+    <div className="midiFile">
         Midi File
-        <div><span>File:</span><span>file1.mid</span></div>
-        <div><span>Date:</span><span>03/03/82</span></div>
-        <div><span>Author:</span><span>Philip Kerman</span></div>
+        <hr/>
+        <div><span>File: </span><span>{props.FilePath}</span></div>
+        <div><span>Date: </span><span>{props.Date}</span></div>
+        <div><span>Author: </span><span>{props.Author}</span></div>
     </div>
 );
 
