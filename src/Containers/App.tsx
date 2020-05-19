@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import MidiFile, { MidiFileInfo } from '../Components/MidiFiles/MidiFile/MidiFile';
 import MidiFiles from '../Components/MidiFiles/MidiFiles'
+import WithClass from '../hoc/WithClass'
+import Aux from '../hoc/Auxiliary'
 
 interface IProps {
 }
@@ -30,21 +32,21 @@ class App extends Component<IProps, IState> {
     const props = this.state.midiFiles;
 
     return (
-      <div className="App">
+      <Aux>
         <header className="">
           <p>
             React App - Midi Files
         </p>
         </header>
-        {/* <MidiFile {...this.state.midiFiles[0]} /> */}
         {
+          /* <MidiFile {...this.state.midiFiles[0]} /> */
           props.map((item, key) =>
-            <MidiFile {...item} key={key}/>
+            <MidiFile {...item} key={key} />
           )
         }
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default WithClass(App, 'App');
