@@ -4,12 +4,15 @@ import MidiFile, { MidiFileInfo } from '../Components/MidiFiles/MidiFile/MidiFil
 import MidiFiles from '../Components/MidiFiles/MidiFiles'
 import WithClass from '../hoc/WithClass'
 import Aux from '../hoc/Auxiliary'
+import Cockpit from '../Components/Cockpit/Cockpit'
+import AuthContext from '../context/AuthContext'
 
 interface IProps {
 }
 
 interface IState {
   midiFiles: MidiFileInfo[];
+  authenticated: boolean
 }
 
 class App extends Component<IProps, IState> {
@@ -23,9 +26,14 @@ class App extends Component<IProps, IState> {
         { FilePath: 'file2.mid', Date: '04/04/82', Author: 'Nigel Kerman' },
         { FilePath: 'file3.mid', Date: '05/05/82', Author: 'Roger Kerman' },
         { FilePath: 'file4.mid', Date: '06/06/82', Author: 'Marge Kerman' }
-      ]
+      ],
+      authenticated: false
     };
   }
+
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
 
   render() {
 
@@ -33,17 +41,20 @@ class App extends Component<IProps, IState> {
 
     return (
       <Aux>
-        <header className="">
-          <p>
-            React App - Midi Files
-        </p>
-        </header>
-        {
-          /* <MidiFile {...this.state.midiFiles[0]} /> */
-          props.map((item, key) =>
-            <MidiFile {...item} key={key} />
-          )
-        }
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }}
+        >
+          <Cockpit />
+          {
+            /* <MidiFile {...this.state.midiFiles[0]} /> */
+            props.map((item, key) =>
+              <MidiFile {...item} key={key} />
+            )
+          }
+        </AuthContext.Provider>
       </Aux>
     );
   }
