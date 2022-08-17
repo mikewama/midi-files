@@ -48,6 +48,7 @@ class App extends Component<IProps, IState> {
           }}
         >
           <Cockpit />
+          <h2>Midi Files</h2>
           {
             /* <MidiFile {...this.state.midiFiles[0]} /> */
             props.map((item, key) =>

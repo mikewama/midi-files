@@ -6,6 +6,7 @@ export interface MidiFileInfo {
     FilePath: string;
     Author: string;
     Date: string;
+    children?: React.ReactNode;
 }
 
 const MidiFile = (props: MidiFileInfo) => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import MidiFile, { MidiFileInfo } from './MidiFile/MidiFile';
 
-const MidiFiles = (props: MidiFileInfo[]) => (
-    <div>
+const MidiFiles = (props: MidiFileInfo[]) => {    
+    return (    
+    <>
         Midi Files list
         {console.log(props[0])}
         {console.log(typeof (props[0]))}
@@ -11,7 +12,8 @@ const MidiFiles = (props: MidiFileInfo[]) => (
                 <MidiFile {...item} />
             )
         }
-    </div>
-);
+    </>
+    )
+};
 
 export default MidiFiles;
